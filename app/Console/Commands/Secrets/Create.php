@@ -81,5 +81,7 @@ class Create extends Command
             'data' => $data,
             'url' => $url,
         ]);
+
+        $this->info("Secret created");
     }
 }

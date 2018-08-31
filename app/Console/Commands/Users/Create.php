@@ -60,5 +60,7 @@ class Create extends Command
             'email' => $email,
             'password' => $password,
         ]);
+
+        $this->info("User created");
     }
 }
