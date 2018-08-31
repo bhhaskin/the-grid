@@ -38,18 +38,29 @@ class Show extends Command
      */
     public function handle()
     {
-        // $uuid = $this->argument('uuid');
-        // if (empty($uuid)) {
-        //     $uuid = $this->ask('What is the user uuid?');
-        // }
-        //
-        // if (!empty($uuid)) {
-        //     $secret = Secret::where('id', '=', $uuid)->firstOrFail();
-        //     $this->info($secret->data);
-        //
-        // } else {
-        //     $this->error("uuid is required");
-        // }
+        $uuid = $this->argument('uuid');
+        if (empty($uuid)) {
+            $uuid = $this->ask('What is the user uuid?');
+        }
+
+        if (!empty($uuid)) {
+            $header = ['id', 'name', 'email', 'created_at', 'updated_at'];
+            $user = User::where('id', '=', $uuid)->firstOrFail();
+            $userArray = array();
+
+            array_push($userArray, [
+                'id' => $user->id,
+                'name' => $user->label,
+                'email' => $user->notes,
+                'created_at' => $user->created_at,
+                'updated_at' => $user->updated_at,
+            ]);
+
+            $this->table($header, $userArray);
+
+        } else {
+            $this->error("uuid is required");
+        }
 
     }
 }

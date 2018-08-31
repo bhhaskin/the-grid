@@ -38,19 +38,19 @@ class Delete extends Command
      */
     public function handle()
     {
-        // $uuid = $this->argument('uuid');
-        // if (empty($uuid)) {
-        //     $uuid = $this->ask('What is the user uuid?');
-        // }
-        //
-        // $secret = Secret::where('id', '=', $uuid)->firstOrFail();
-        //
-        // if ($this->option('y') != null || $this->confirm('Are you sure you want to delete this secret? This cannot be undone.')) {
-        //     $secret->delete();
-        //     $this->info("Secret deleted.");
-        // } else {
-        //     $this->error("Operation Aborted.");
-        // }
+        $uuid = $this->argument('uuid');
+        if (empty($uuid)) {
+            $uuid = $this->ask('What is the user uuid?');
+        }
+
+        $user = User::where('id', '=', $uuid)->firstOrFail();
+
+        if ($this->option('y') != null || $this->confirm('Are you sure you want to delete this user? This cannot be undone.')) {
+            $user->delete();
+            $this->info("User deleted.");
+        } else {
+            $this->error("Operation Aborted.");
+        }
 
     }
 }

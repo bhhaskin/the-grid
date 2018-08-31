@@ -39,7 +39,7 @@ class Index extends Command
     public function handle()
     {
         $header = ['id', 'name', 'email', 'created_at', 'updated_at'];
-        $users = User::all(['id', 'name', 'email', 'created_at', 'updated_at'])->toArray();
+        $users = User::all($header)->toArray();
         $this->table($header, $users);
     }
 }
