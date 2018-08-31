@@ -3,10 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuids;
-
+use App\Traits\{Encryptable, Uuids};
 
 class Secret extends Model
 {
+
+    public $incrementing = false;
+
+    use Encryptable;
     use Uuids;
+
+    protected $fillable = [
+        'data',
+    ];
+
+    protected $encryptable = [
+        'data',
+    ];
 }
