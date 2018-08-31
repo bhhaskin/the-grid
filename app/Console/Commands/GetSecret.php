@@ -43,8 +43,13 @@ class GetSecret extends Command
             $uuid = $this->ask('What is the secret uuid?');
         }
 
-        $secret = Secret::where('id', '=', $uuid)->firstOrFail();
+        if (!empty($uuid)) {
+            $secret = Secret::where('id', '=', $uuid)->firstOrFail();
+            $this->info($secret->data);
 
-        $this->info($secret->data);
+        } else {
+            $this->error("uuid is required");
+        }
+
     }
 }
