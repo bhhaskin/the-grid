@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Users;
 
 use Illuminate\Console\Command;
-use App\Secret;
+use App\User;
 
-class CreateSecret extends Command
+class Create extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'secret:create {secret?}';
+    protected $signature = 'user:create {secret?}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Creates a new secret';
+    protected $description = 'Creates a new user';
 
     /**
      * Create a new command instance.
@@ -38,11 +38,11 @@ class CreateSecret extends Command
      */
     public function handle()
     {
-        $data = $this->argument('secret');
-        if (empty($data)) {
-            $data = $this->secret('What is the secret');
-        }
+        // $data = $this->argument('user');
+        // if (empty($data)) {
+        //     $data = $this->secret('What is the user');
+        // }
 
-        Secret::create(['data' => $data]);
+        // Secret::create(['data' => $data]);
     }
 }

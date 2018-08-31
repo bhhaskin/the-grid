@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Users;
 
 use Illuminate\Console\Command;
-use App\Secret;
+use App\User;
 
-class ListSecret extends Command
+class Index extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'secret:list';
+    protected $signature = 'users';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Lists secret';
+    protected $description = 'List users';
 
     /**
      * Create a new command instance.
@@ -38,8 +38,8 @@ class ListSecret extends Command
      */
     public function handle()
     {
-        $header = ['id', 'created_at', 'updated_at'];
-        $secrets = Secret::all(['id', 'created_at', 'updated_at'])->toArray();
-        $this->table($header, $secrets);
+        $header = ['id', 'name', 'email', 'created_at', 'updated_at'];
+        $users = User::all(['id', 'name', 'email', 'created_at', 'updated_at'])->toArray();
+        $this->table($header, $users);
     }
 }

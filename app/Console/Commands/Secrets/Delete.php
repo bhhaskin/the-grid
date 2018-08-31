@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Secrets;
 
 use Illuminate\Console\Command;
 use App\Secret;
 
-class DeleteSecret extends Command
+class Delete extends Command
 {
     /**
      * The name and signature of the console command.

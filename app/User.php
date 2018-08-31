@@ -8,6 +8,8 @@ use App\Traits\Uuids;
 
 class User extends Authenticatable
 {
+    public $incrementing = false;
+
     use Notifiable;
     use Uuids;
 

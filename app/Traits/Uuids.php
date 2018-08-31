@@ -8,13 +8,6 @@ trait Uuids
 {
 
     /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
      * Boot function from laravel.
      */
     protected static function boot()

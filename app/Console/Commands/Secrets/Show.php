@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Secrets;
 
 use Illuminate\Console\Command;
 use App\Secret;
 
-class GetSecret extends Command
+class Show extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'secret:get {uuid?}';
+    protected $signature = 'secret:show {uuid?}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Get secret by uuid';
+    protected $description = 'Show secret by uuid';
 
     /**
      * Create a new command instance.
@@ -44,8 +44,23 @@ class GetSecret extends Command
         }
 
         if (!empty($uuid)) {
+            $header = ['id', 'label', 'notes', 'type', 'username', 'data', 'url',  'created_at', 'updated_at'];
             $secret = Secret::where('id', '=', $uuid)->firstOrFail();
-            $this->info($secret->data);
+            $secretArray = array();
+
+            array_push($secretArray, [
+                'id' => $secret->id,
+                'label' => $secret->label,
+                'notes' => $secret->notes,
+                'type' => $secret->type,
+                'username' => $secret->username,
+                'data' => $secret->data,
+                'url' => $secret->url,
+                'created_at' => $secret->created_at,
+                'updated_at' => $secret->updated_at,
+            ]);
+
+            $this->table($header, $secretArray);
 
         } else {
             $this->error("uuid is required");
