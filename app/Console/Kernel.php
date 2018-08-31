@@ -13,10 +13,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        "App\Console\Commands\CreateSecret",
-        "App\Console\Commands\ListSecret",
-        "App\Console\Commands\DeleteSecret",
-        "App\Console\Commands\GetSecret",
+        "App\Console\Commands\Secrets\CreateSecret",
+        "App\Console\Commands\Secrets\ListSecret",
+        "App\Console\Commands\Secrets\DeleteSecret",
+        "App\Console\Commands\Secrets\GetSecret",
     ];
 
     /**
