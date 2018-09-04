@@ -39,7 +39,7 @@
                             <a class="nav-link" href="{{ action('UserController@index') }}">{{ __('User') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Secrets') }}</a>
+                            <a class="nav-link" href="{{ action('SecretController@index') }}">{{ __('Secrets') }}</a>
                         </li>
                         @endauth
                     </ul>

@@ -76,7 +76,6 @@ class Create extends Command
             'label' => $label,
             'notes' => $notes,
             'type' => $type,
-            'label' => $label,
             'username' => $username,
             'data' => $data,
             'url' => $url,

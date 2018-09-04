@@ -14,7 +14,12 @@ class Secret extends Model
     use Uuids;
 
     protected $fillable = [
+        'label',
+        'notes',
+        'type',
+        'username',
         'data',
+        'url',
     ];
 
     protected $encryptable = [
