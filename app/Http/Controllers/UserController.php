@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UserStore;
+use App\Http\Requests\{UserStore, UserCreate};
 use App\User;
 
 class UserController extends Controller
@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -45,9 +45,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserStore $userStore)
+    public function store(UserCreate $request)
     {
         $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
         return redirect()->action('UserController@show', ['user' => $user]);
     }
 

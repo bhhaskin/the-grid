@@ -2,6 +2,20 @@
 
 @section('content')
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="float-left">
+
+            </div>
+            <div class="float-right">
+                <a href="{{ action('UserController@create') }}" role="button" class="btn btn-primary">Create</a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+            <br>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="table-responsive">
