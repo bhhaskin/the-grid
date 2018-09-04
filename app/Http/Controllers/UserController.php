@@ -3,12 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserStore;
 use App\User;
 
 class UserController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the reApp\Http\Requestssource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -17,10 +29,9 @@ class UserController extends Controller
         $users = User::all();
         return view('user.index', ['users' => $users]);
     }
-
     /**
      * Show the form for creating a new resource.
-     *
+     *App\Http\Requests
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -34,9 +45,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStore $userStore)
     {
-        //
+        $user = new User;
+        return redirect()->action('UserController@show', ['user' => $user]);
     }
 
     /**
@@ -58,7 +70,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -68,9 +80,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserStore $request, User $user)
     {
-        //
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+
+        if (!empty($request->input('password'))) {
+            $user->password = $request->input('password');
+        }
+
+        $user->save();
+
+        return redirect()->action('UserController@show', ['user' => $user]);
     }
 
     /**
