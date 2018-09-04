@@ -34,8 +34,12 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
+                                        <a href="{{ action('UserController@edit', ['user' => $user ]) }}" role="button" class="dropdown-item">Edit</a>
+                                        <form action="{{ action('UserController@destroy', ['user' => $user ]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="dropdown-item">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </th>
