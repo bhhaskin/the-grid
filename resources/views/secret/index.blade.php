@@ -23,29 +23,20 @@
                     <caption>List of secrets</caption>
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Label</th>
-                            <th scope="col">Notes</th>
-                            <th scope="col">Type</th>
                             <th scope="col">Username</th>
                             <th scope="col">Data</th>
-                            <th scope="col">URL</th>
-                            <th scope="col">Updated</th>
+                            <th scope="col">Type</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($secrets as $secret)
                         <tr>
-                            <th scope="row">{{ $secret->id }}</th>
-                            <th>{{ $secret->label }}</th>
-                            <th>{{ $secret->notes }}</th>
-                            <th>{{ $secret->type }}</th>
+                            <th scope="row">{{ $secret->label }}</th>
                             <th>{{ $secret->username }}</th>
                             <th>{{ $secret->data }}</th>
-                            <th>{{ $secret->url }}</th>
-                            <th>{{ $secret->created_at }}</th>
-                            <th>{{ $secret->updated_at }}</th>
+                            <th>{{ $secret->type }}</th>
                             <th>
                                 <div class="btn-group">
                                     <a class="btn btn-secondary btn-sm" href="{{ action('SecretController@show', ['secret' => $secret]) }}" type="button">

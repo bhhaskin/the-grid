@@ -23,22 +23,16 @@
                     <caption>List of users</caption>
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Created</th>
-                            <th scope="col">Updated</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <th scope="row">{{ $user->id }}</th>
-                            <th>{{ $user->name }}</th>
+                            <th scope="row">{{ $user->name }}</th>
                             <th>{{ $user->email }}</th>
-                            <th>{{ $user->created_at }}</th>
-                            <th>{{ $user->updated_at }}</th>
                             <th>
                                 <div class="btn-group">
                                     <a class="btn btn-secondary btn-sm" href="{{ action('UserController@show', ['user' => $user]) }}" type="button">
