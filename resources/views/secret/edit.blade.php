@@ -51,7 +51,7 @@
                         <div class="form-group row {{ $errors->has('label') ? ' has-error' : '' }}">
                             <label for="type" class="col-sm-3 col-form-label">Type</label>
                             <div class="col-sm-9">
-                                <select class="form-control" id="type">
+                                <select class="form-control" name="type" id="type">
                                     <option value="credential">Credential</option>
                                       <option value="secret">Secret</option>
                                     </select>
@@ -63,9 +63,9 @@
                             </div>
                         </div>
                         <div class="form-group row {{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="type" class="col-sm-3 col-form-label">User Name</label>
+                            <label for="username" class="col-sm-3 col-form-label">User Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="type" name="type" value="{{ (isset($secret->username) && !empty($secret->username)) ? $secret->username : old('username') }}" placeholder="User Name">
+                                <input type="text" class="form-control" id="username" name="username" value="{{ (isset($secret->username) && !empty($secret->username)) ? $secret->username : old('username') }}" placeholder="User Name">
                                 @if ($errors->has('username'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('username') }}</strong>
@@ -74,9 +74,9 @@
                             </div>
                         </div>
                         <div class="form-group row {{ $errors->has('data') ? ' has-error' : '' }}">
-                            <label for="type" class="col-sm-3 col-form-label">Data</label>
+                            <label for="data" class="col-sm-3 col-form-label">Data</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="type" name="type" value="{{ (isset($secret->data) && !empty($secret->data)) ? $secret->data : old('data') }}" placeholder="Data">
+                                <input type="text" class="form-control" id="data" name="data" value="{{ (isset($secret->data) && !empty($secret->data)) ? $secret->data : old('data') }}" placeholder="Data">
                                 @if ($errors->has('data'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('data') }}</strong>

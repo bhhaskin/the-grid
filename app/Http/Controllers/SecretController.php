@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Secret\Update as SecretUpdate;
+use App\Http\Requests\Secret\Store as SecretStore;
 use App\Secret;
 
 class SecretController extends Controller
@@ -36,7 +38,7 @@ class SecretController extends Controller
      */
     public function create()
     {
-        //
+        return view('secret.create');
     }
 
     /**
@@ -45,9 +47,18 @@ class SecretController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SecretStore $request)
     {
-        //
+        $secret = new Secret();
+        $secret->label = $request->input('label');
+        $secret->notes = $request->input('notes');
+        $secret->type = $request->input('type');
+        $secret->username = $request->input('username');
+        $secret->data = $request->input('data');
+        $secret->url = $request->input('url');
+        $secret->save();
+
+        return redirect()->action('SecretController@show', ['secret' => $secret]);
     }
 
     /**
@@ -79,9 +90,17 @@ class SecretController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SecretUpdate $request, Secret $secret)
     {
-        //
+        $secret->label = $request->input('label');
+        $secret->notes = $request->input('notes');
+        $secret->type = $request->input('type');
+        $secret->username = $request->input('username');
+        $secret->data = $request->input('data');
+        $secret->url = $request->input('url');
+        $secret->save();
+
+        return redirect()->action('SecretController@show', ['secret' => $secret]);
     }
 
     /**

@@ -7,58 +7,84 @@
             <div class="card">
                 <div class="card-header">
                     <div class="float-left">
-                        User Create
+                        Secret Create
                     </div>
                     <div class="float-right">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{ action('UserController@index') }}" role="button" class="btn btn-secondary">Back</a>
+                            <a href="{{ action('SecretController@index') }}" role="button" class="btn btn-secondary">Back</a>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
+
                 <div class="card-body">
-                    <form action="{{ action('UserController@store') }}" method="post">
+                    <form action="{{ action('SecretController@store') }}" method="post">
                         {{ csrf_field() }}
-                        <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-sm-3 col-form-label">Name</label>
+                        <div class="form-group row {{ $errors->has('label') ? ' has-error' : '' }}">
+                            <label for="label" class="col-sm-3 col-form-label">Label</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="name" name="name" value="{{ (isset($user->name) && !empty($user->name)) ? $user->name : old('name') }}" placeholder="Name" required>
-                                @if ($errors->has('name'))
+                                <input type="text" class="form-control" id="label" name="label" value="{{ (isset($secret->label) && !empty($secret->label)) ? $secret->label : old('label') }}" placeholder="Label">
+                                @if ($errors->has('label'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('label') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <div class="form-group row {{ $errors->has('notes') ? ' has-error' : '' }}">
+                            <label for="notes" class="col-sm-3 col-form-label">Notes</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="email" name="email" value="{{ (isset($user->email) && !empty($user->email)) ? $user->email : old('email') }}" placeholder="Email" required>
-                                @if ($errors->has('email'))
+                                <textarea class="form-control" id="label" name="notes">{{ (isset($secret->notes) && !empty($secret->notes)) ? $secret->notes : old('notes') }}</textarea>
+                                @if ($errors->has('notes'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('notes') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-sm-3 col-form-label">Password</label>
+                        <div class="form-group row {{ $errors->has('label') ? ' has-error' : '' }}">
+                            <label for="type" class="col-sm-3 col-form-label">Type</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                                @if ($errors->has('password'))
+                                <select class="form-control" name="type" id="type">
+                                    <option value="credential">Credential</option>
+                                      <option value="secret">Secret</option>
+                                    </select>
+                                @if ($errors->has('type'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('type') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password_confirmation" class="col-sm-3 col-form-label">Confirm Password</label>
+                        <div class="form-group row {{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-sm-3 col-form-label">User Name</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
-                                @if ($errors->has('password_confirmation'))
+                                <input type="text" class="form-control" id="username" name="username" value="{{ (isset($secret->username) && !empty($secret->username)) ? $secret->username : old('username') }}" placeholder="User Name">
+                                @if ($errors->has('username'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row {{ $errors->has('data') ? ' has-error' : '' }}">
+                            <label for="data" class="col-sm-3 col-form-label">Data</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="data" name="data" value="{{ (isset($secret->data) && !empty($secret->data)) ? $secret->data : old('data') }}" placeholder="Data">
+                                @if ($errors->has('data'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('data') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row {{ $errors->has('url') ? ' has-error' : '' }}">
+                            <label for="url" class="col-sm-3 col-form-label">URL</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="url" name="url" value="{{ (isset($secret->url) && !empty($secret->url)) ? $secret->url : old('url') }}" placeholder="URL">
+                                @if ($errors->has('url'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('url') }}</strong>
                                     </span>
                                 @endif
                             </div>
