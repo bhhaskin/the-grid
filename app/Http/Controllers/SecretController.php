@@ -56,6 +56,7 @@ class SecretController extends Controller
         $secret->username = $request->input('username');
         $secret->data = $request->input('data');
         $secret->url = $request->input('url');
+        $secret->user_id =  Auth::id();
         $secret->save();
 
         return redirect()->action('SecretController@show', ['secret' => $secret]);

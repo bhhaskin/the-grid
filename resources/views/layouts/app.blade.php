@@ -36,7 +36,7 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ action('UserController@index') }}">{{ __('User') }}</a>
+                            <a class="nav-link" href="{{ action('UserController@index') }}">{{ __('Users') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ action('SecretController@index') }}">{{ __('Secrets') }}</a>

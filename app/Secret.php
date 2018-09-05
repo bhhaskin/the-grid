@@ -25,4 +25,12 @@ class Secret extends Model
     protected $encryptable = [
         'data',
     ];
+
+    /**
+     * Get the post that owns the comment.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

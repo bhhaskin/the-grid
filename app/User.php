@@ -36,4 +36,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] =  Hash::make($value);
     }
+
+    /**
+     * Get the secrets for the user.
+     */
+    public function secrets()
+    {
+        return $this->hasMany('App\Secret');
+    }
 }
